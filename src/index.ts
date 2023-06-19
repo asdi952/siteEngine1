@@ -1,11 +1,9 @@
-import { RouteNode, RouterNode, TagNode, root } from "./tagNode";
+import { RouteNode, RouterNode } from "./routerNode";
+import { TagNode, root } from "./tagNode";
+
+ 
 
 
-class PageChunk{
-    text:string = ""
-    startRoute: RouteNode|null = null
-    endRoute: RouteNode|null = null
-}
 
 function test(){
     const div0 = TagNode.create("div")
@@ -23,6 +21,6 @@ function test(){
     router0.addRoute(route0)
     router0.addRoute(route1)
 
-    root.node = router0.getDomNode()
+    root.route.addDomNode(router0.getDomNode()) 
 }
 test()
