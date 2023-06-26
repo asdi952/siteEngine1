@@ -1,10 +1,23 @@
 
 class BranchRender{
     text:string = ""
+    branch:Branch
 
-
+    constructor(branch:Branch){
+        this.branch = branch
+    }
     render():string{
         return this.text
+    }
+}
+class BranchRenderTicket{
+    minLimit:number = 0
+    maxLimit:number = 0
+    forceRender:boolean = true
+    host:DomNodeType
+
+    constructor(host:DomNodeType){
+        this.host = host
     }
 }
 
@@ -16,6 +29,8 @@ class Branch{
 
     branchIndex:number = -1
     isRooted:boolean = false
+
+    render:BranchRender = new BranchRender(this)
 
     static create(){
         return new Branch()
@@ -72,6 +87,7 @@ class RouterDomNode{
     readonly type:DomNodeEnum = DomNodeEnum.RouterDomNode
     domNode: DomNode = new DomNode(this)
     branch: Branch|null = null
+    BranchRenderTicket:BranchRenderTicket 
 
     static create(){
         return new RouterDomNode()
